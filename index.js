@@ -32,7 +32,8 @@ app.directive('menu',function(){
 			$scope.menus=[{title:"Home",Url:"home.html"},
 						  {title:"About",Url:"about.html"},
 						  {title:"Service",Url:"service.html"},
-						  {title:"Contact",Url:"contact.html"}]
+						  {title:"Contact",Url:"contact.html"},
+						  {title:"SignUp",Url:"#"}]
 		}
 	}
 });
@@ -45,8 +46,8 @@ app.directive('content',function(){
 		},
 		scope:false,
 		controller:function($scope){
-			$scope.blogs= [{title:"First blog",Url:"firstblog.html",views:454},
-						   {title:"First blog",Url:"firstblog.html",views:454},
+			$scope.blogs= [{title:"First blog",Url:"blog.html",views:454},
+						   {title:"First blog",Url:"blog.html",views:454},
 						   {title:"First blog",Url:"firstblog.html",views:454},
 						   {title:"First blog",Url:"firstblog.html",views:454},
 						   {title:"First blog",Url:"firstblog.html",views:454},
@@ -69,6 +70,28 @@ app.directive('tbFooter',function(){
 		scope:false,
 		controller:function($scope){
 			
+		}
+	}
+});
+
+app.directive('itemContent',function(){
+	return {
+		restrict:"AE",
+		templateUrl:function(element, attr){
+			return "templates/itemcontent.html?"+new Date()
+		},
+		scope:false,
+		controller:function($scope){
+			$scope.blogs= [{title:"First blog",Url:"blog.html",views:454},
+						   {title:"First blog",Url:"blog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454},
+						   {title:"First blog",Url:"firstblog.html",views:454}];
 		}
 	}
 });
