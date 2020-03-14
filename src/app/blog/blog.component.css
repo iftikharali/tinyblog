@@ -1,0 +1,24 @@
+.content-sub-title,.content-title{
+    text-align: center;
+}
+.blog-image{
+    text-align: center;
+}
+.main-image{
+    max-width: 90%;
+}
+.main-image-title{
+    color: #79797d;
+}
+.user-avatar-image{
+    border-radius:50px;
+    border: 1px solid #aaa;
+}
+.user-avatar{
+    float: left;
+    margin: 5px;
+}
+.user-name{
+    font-weight: bold;
+    cursor: pointer;
+}

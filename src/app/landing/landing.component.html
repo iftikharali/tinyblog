@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-lg-1">
+
+    </div>
+    <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-8">
+                <input [(ngModel)] = "SearchText" (focus) = "GetUserList()" type="text">
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12"  *ngFor="let tile of landingtiles">
+                    <div class="blog-image-container"><img class="blog-image" src="{{tile.img}}" /></div>
+                    <div class="blog-details">
+                        <div class="blog-title"><a href="{{tile.Url}}" target="_blank" > {{tile.Title}}</a></div>
+                        <div class="blog-excerpt">{{tile.about}}</div>
+                        <div class="blog-category">{{tile.category}}</div>
+                        <div class="blog-vote">{{tile.vote}}</div>
+                    </div>
+                </div>
+        </div>
+        <div class="pagination">
+          <div class="row pagination-container">
+            <div class="col-lg-12">
+              <span><Button class="btn"><<Prev</Button>
+                <input type="text" class="navigate-input" value=1>
+              <Button class="btn">Next>></Button></span>
+            </div>
+          </div>  
+        </div>
+
+    </div>
+</div>

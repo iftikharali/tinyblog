@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+
+  .user-avatar-image{
+      border-radius:8px;
+  }
+  .user-avatar{
+      float: left;
+      margin: 5px;
+  }
+  .pagination{
+    float:right;
+  }
+  .navigate-input{
+    max-width: 2em;
+  }

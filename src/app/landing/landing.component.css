@@ -1,0 +1,19 @@
+.blog-image{
+    width:140px;
+    border-radius: 5px;;
+    float:left;
+    margin-right: 10px;
+}
+.blog-image-container
+{
+    margin-top: 10px;
+}
+
+.pagination{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pagination-container{
+    margin: auto;
+}
