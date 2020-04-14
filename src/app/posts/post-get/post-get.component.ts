@@ -9,11 +9,12 @@ export interface LandingTile {
   vote: number
 }
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  selector: 'app-post-get',
+  templateUrl: './post-get.component.html',
+  styleUrls: ['./post-get.component.css']
 })
-export class BlogComponent implements OnInit {
+
+export class PostGetComponent implements OnInit {
 
   constructor() { }
   landingtiles: LandingTile[] = [

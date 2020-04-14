@@ -7,7 +7,7 @@ import {HttpClient } from '@angular/common/http';
 export class UsersService {
   constructor(private client: HttpClient) { }
 
-  ServiceURI = 'http://localhost:54611/api';
+  ServiceURI = 'http://localhost:54611/api/v1';
 
   addUser(Name,Phone, Email,Password,DateOfBirth){
     const UserObject ={
@@ -18,7 +18,7 @@ export class UsersService {
       DateOfBirth
     };
 
-    this.client.post(this.ServiceURI+'/users',UserObject)
+    this.client.post(this.ServiceURI+'/user',UserObject)
       .subscribe(result => console.log('User posted successfully'));
   }
 }

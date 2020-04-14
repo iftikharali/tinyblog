@@ -20,6 +20,11 @@ import { EditorComponent } from './editor/editor.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { BlogGetComponent } from './blog-get/blog-get.component';
 import { SidebarModule } from 'ng-sidebar';
+import { BlogCreateComponent } from './blog-create/blog-create.component';
+import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { PostGetComponent } from './posts/post-get/post-get.component';
+import { PostComponent } from './posts/post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { SidebarModule } from 'ng-sidebar';
     LandingComponent,
     BlogComponent,
     EditorComponent,
-    BlogGetComponent
+    BlogGetComponent,
+    BlogCreateComponent,
+    BlogEditComponent,
+    PostCreateComponent,
+    PostGetComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

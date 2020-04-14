@@ -7,6 +7,9 @@ import { LandingComponent } from './landing/landing.component';
 import { BlogComponent } from './blog/blog.component';
 import { EditorComponent } from './editor/editor.component';
 import { BlogGetComponent } from './blog-get/blog-get.component';
+import { BlogCreateComponent } from './blog-create/blog-create.component';
+import { PostGetComponent } from './posts/post-get/post-get.component';
+import { PostComponent } from './posts/post/post.component';
 
 
 const routes: Routes = [
@@ -27,8 +30,20 @@ const routes: Routes = [
     component: BlogComponent
   },
   {
+    path:'blog/create',
+    component: BlogCreateComponent
+  },
+  {
     path:'blog/:id/:urlPart',
     component: BlogGetComponent
+  },
+  {
+    path:'posts',
+    component: PostGetComponent
+  },
+  {
+    path:'post/:id',
+    component: PostComponent
   },
   {
     path:'editor',

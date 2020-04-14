@@ -8,11 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class BlogGetComponent implements OnInit {
 
   constructor() { }
-  private _opened: boolean = false;
- 
-  private _toggleSidebar() {
-    this._opened = !this._opened;
-  }
   ngOnInit() {
   }
 

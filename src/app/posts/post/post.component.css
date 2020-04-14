@@ -1,6 +1,3 @@
-.testClass{
-    background-color: aquamarine;
-}
 .content-sub-title,.content-title{
     text-align: center;
 }
@@ -25,6 +22,6 @@
     font-weight: bold;
     cursor: pointer;
 }
-.blog-badges-share{
+.post-badges-share{
     text-align: end;
 }

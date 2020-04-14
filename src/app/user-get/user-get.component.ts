@@ -41,6 +41,7 @@ export class UserGetComponent implements OnInit {
     {Name: 'User21', votes: 100, about: "A genuine users of the year", img: '../assets/images/user.jpg',category: 'Azure Web Developent', vote: 245},
   ];
   ngOnInit() {
+    this.GetUserList();
   }
 
   GetUserList(){
