@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ServiceUrls} from '../Constants/ServiceUrls'
 
 @Component({
   selector: 'app-landing',

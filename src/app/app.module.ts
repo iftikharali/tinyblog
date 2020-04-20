@@ -3,28 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserAddComponent } from './user-add/user-add.component';
-import { UserGetComponent } from './user-get/user-get.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
+import { UserGetComponent } from './users/user-get/user-get.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersService } from './Services/users.service'
+import { UsersService } from './users/userService/users.service'
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 
 import { LandingComponent } from './landing/landing.component';
-import { BlogComponent } from './blog/blog.component';
+import { BlogComponent } from './blogs/blog/blog.component';
 import { EditorComponent } from './editor/editor.component';
 import { NgxEditorModule } from 'ngx-editor';
-import { BlogGetComponent } from './blog-get/blog-get.component';
-import { SidebarModule } from 'ng-sidebar';
-import { BlogCreateComponent } from './blog-create/blog-create.component';
-import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { BlogGetComponent } from './blogs/blog-get/blog-get.component';
+import { BlogCreateComponent } from './blogs/blog-create/blog-create.component';
+import { BlogEditComponent } from './blogs/blog-edit/blog-edit.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostGetComponent } from './posts/post-get/post-get.component';
 import { PostComponent } from './posts/post/post.component';
+import { UserLoginComponent } from './users/user-login/user-login.component';
+import { UserLogoutComponent } from './users/user-logout/user-logout.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { PostComponent } from './posts/post/post.component';
     BlogEditComponent,
     PostCreateComponent,
     PostGetComponent,
-    PostComponent
+    PostComponent,
+    UserLoginComponent,
+    UserLogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +56,7 @@ import { PostComponent } from './posts/post/post.component';
     ReactiveFormsModule,
     FormsModule,
     NgxEditorModule,
-    BrowserModule,
-    SidebarModule.forRoot()
+    BrowserModule
   ],
   providers: [
     UsersService
