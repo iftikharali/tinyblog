@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/posts/PostService/post.service';
 import SearchPostRequest from 'src/app/Models/RequestModels/SearchPostRequest';
-export interface LandingTile {
-  Title: string;
-  Url: string;
-  votes: number;
-  about: string;
-  img: string;
-  category: string;
-  vote: number
-}
+import { Post } from '../models/Post';
+
 @Component({
   selector: 'app-post-get',
   templateUrl: './post-get.component.html',
@@ -20,38 +13,116 @@ export class PostGetComponent implements OnInit {
 
   constructor(private service: PostService) { }
   request: SearchPostRequest;
-  landingtiles: LandingTile[] = [
-    {Title: 'Sample Tyny blog title 1', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 1', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 1', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 2', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 3', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 4', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 5', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 6', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 7', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 8', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 9', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 1', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 10', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 11', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 12', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 13', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 14', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 15', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 16', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 17', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 18', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 19', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 20', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-    {Title: 'Sample Tyny blog title 21', Url: 'http://localhost:4200/post/320/blog+title+new+url', votes: 100, about: "A genuine users of the year", img: '../assets/images/blog.jpg',category: 'Azure Web Developent', vote: 245},
-  ];
-  ngOnInit() {
-    var ast = this.service.getPost(this.request).subscribe(response =>
-      {
-        console.log(response);
-      });
-    
+  CurrentPageNumber: number = 1;
+  MaxPageNumber: number = 1;
+  DisablePreviousButton: boolean = true;
+  DisableNextButton: boolean = true;
+  posts: Post[] = [];
+  postItem: Post[] = [];
+  PageNumberButtons: (string|number)[] = [1];
+
+  GetPageNumberButton(){
+      var subArray =[];
+      var currentpage = this.CurrentPageNumber;
+      if(this.MaxPageNumber<7){
+        return Array.from(Array(this.MaxPageNumber).keys()).map(num=>{++num});
+      }else{
+        if(currentpage<4){
+          subArray.push(1);
+          subArray.push(2);
+          subArray.push(3);
+          subArray.push(4);
+          subArray.push("...");
+          subArray.push(this.MaxPageNumber);
+          return subArray;
+        }else if(currentpage>this.MaxPageNumber-4){
+          subArray.push(1);
+          subArray.push("...");
+          subArray.push(this.MaxPageNumber-3);
+          subArray.push(this.MaxPageNumber-2);
+          subArray.push(this.MaxPageNumber-1);
+          subArray.push(this.MaxPageNumber);
+          return subArray;
+        }else{
+          subArray.push(1);
+          subArray.push("...");
+          subArray.push(currentpage-2);
+          subArray.push(currentpage-1);
+          subArray.push(currentpage);
+          subArray.push(currentpage+1);
+          subArray.push(currentpage+2);
+          subArray.push("...");
+          subArray.push(this.MaxPageNumber);
+          return subArray;
+        }
+      }
+
   }
+
+  ngOnInit() {
+    this.service.getPost(this.request).subscribe(response =>
+      {
+        this.posts = response;
+        this.MaxPageNumber = Math.ceil(this.posts.length/10);
+        var Index = (this.CurrentPageNumber-1)*10;
+        this.postItem = this.posts.slice(Index,Index+10);
+        this.PageNumberButtons = this.GetPageNumberButton();
+        if(this.posts.length>10){
+          this.DisableNextButton = false;
+        }
+      });
+  }
+
+  GoToPage(PageNumber){
+        this.DisableNextButton = false;
+        this.DisablePreviousButton = false;
+        this.CurrentPageNumber = PageNumber;
+        var Index = (this.CurrentPageNumber-1)*10;
+        this.postItem = this.posts.slice(Index,Index+10);
+        if(this.CurrentPageNumber>=this.MaxPageNumber){
+          this.DisableNextButton = true;
+        }
+        if(this.CurrentPageNumber<=1){
+          this.DisablePreviousButton = true;
+        }
+        this.PageNumberButtons = this.GetPageNumberButton();
+  }
+  nextPage(){
+      if(this.CurrentPageNumber<this.MaxPageNumber){
+        this.DisableNextButton = false;
+        this.DisablePreviousButton = false;
+        this.CurrentPageNumber++;
+        var Index = (this.CurrentPageNumber-1)*10;
+        this.postItem = this.posts.slice(Index,Index+10);
+        if(this.CurrentPageNumber>=this.MaxPageNumber){
+          this.DisableNextButton = true;
+        }
+      }
+      this.PageNumberButtons = this.GetPageNumberButton();
+  }
+
+  previousPage(){
+    if(this.CurrentPageNumber>1){
+      this.DisablePreviousButton = false;
+      this.DisableNextButton = false;
+      this.CurrentPageNumber--;
+      var Index = (this.CurrentPageNumber-1)*10;
+      this.postItem = this.posts.slice(Index,Index+10);
+      if(this.CurrentPageNumber<=1){
+        this.DisablePreviousButton = true;
+      }
+    }
+    this.PageNumberButtons = this.GetPageNumberButton();
+  }
+
+  IsActivePageNumber(PageNumber){
+    if(PageNumber==this.CurrentPageNumber){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  
 
 }
