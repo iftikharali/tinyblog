@@ -60,7 +60,7 @@ export class PostGetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getPost(this.request).subscribe(response =>
+    this.service.getPosts(this.request).subscribe(response =>
       {
         this.posts = response;
         this.MaxPageNumber = Math.ceil(this.posts.length/10);
@@ -74,6 +74,9 @@ export class PostGetComponent implements OnInit {
   }
 
   GoToPage(PageNumber){
+        if(PageNumber=="..."){
+          return;
+        }
         this.DisableNextButton = false;
         this.DisablePreviousButton = false;
         this.CurrentPageNumber = PageNumber;
@@ -117,6 +120,13 @@ export class PostGetComponent implements OnInit {
 
   IsActivePageNumber(PageNumber){
     if(PageNumber==this.CurrentPageNumber){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  IsPageNumberDots(PageNumber){
+    if(PageNumber=="..."){
       return true;
     }else{
       return false;

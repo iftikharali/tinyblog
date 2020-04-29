@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import {GlobalConstants} from '../../Constants/GlobalConstants';
 import { ServiceUrls } from 'src/app/Constants/ServiceUrls';
+import User from 'src/app/Models/User';
 
 
 @Injectable({
@@ -23,24 +24,5 @@ export class UsersService {
       .subscribe(result => console.log('User posted successfully'));
   }
 
-  loginUser(UserName,Password){
-    const UserLoginObject = {
-      UserName,
-      Password
-    }
-    this.client.post(GlobalConstants.BASE_URL+ServiceUrls.USER_LOGIN,UserLoginObject)
-    .subscribe(result =>
-      {
-        console.log('user logged in with token: ');
-        console.log(result);
-      })
-  }
 
-  logoutUser(){
-    this.client.get(GlobalConstants.BASE_URL+ServiceUrls.USER_LOGOUT)
-    .subscribe(response =>
-      {
-        console.log('user logged out successfully');
-      })
-  }
 }

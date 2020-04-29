@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,6 @@ import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { LandingComponent } from './landing/landing.component';
 import { BlogComponent } from './blogs/blog/blog.component';
 import { EditorComponent } from './editor/editor.component';
-import { NgxEditorModule } from 'ngx-editor';
 import { BlogGetComponent } from './blogs/blog-get/blog-get.component';
 import { BlogCreateComponent } from './blogs/blog-create/blog-create.component';
 import { BlogEditComponent } from './blogs/blog-edit/blog-edit.component';
@@ -26,7 +25,15 @@ import { PostGetComponent } from './posts/post-get/post-get.component';
 import { PostComponent } from './posts/post/post.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserLogoutComponent } from './users/user-logout/user-logout.component';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { UserComponent } from './users/user/user.component';
 
+@Pipe({
+  name: 'timeAgo',
+  pure: false
+})
+export class TimeAgoExtendsPipe extends TimeAgoPipe {}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +50,9 @@ import { UserLogoutComponent } from './users/user-logout/user-logout.component';
     PostGetComponent,
     PostComponent,
     UserLoginComponent,
-    UserLogoutComponent
+    UserLogoutComponent,
+    TimeAgoExtendsPipe,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +64,9 @@ import { UserLogoutComponent } from './users/user-logout/user-logout.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxEditorModule,
-    BrowserModule
+    BrowserModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     UsersService

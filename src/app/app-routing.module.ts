@@ -12,12 +12,15 @@ import { PostGetComponent } from './posts/post-get/post-get.component';
 import { PostComponent } from './posts/post/post.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserLogoutComponent } from './users/user-logout/user-logout.component';
+import { AuthGuard } from './Utilities/auth.guard';
+import { UserComponent } from './users/user/user.component';
 
 
 const routes: Routes = [
   {
     path:'user/edit/:id',
-    component: UserEditComponent
+    component: UserEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'user/register',
@@ -36,16 +39,21 @@ const routes: Routes = [
     component: UserGetComponent
   },
   {
+    path: 'user/:id/:username',
+    component: UserComponent
+  },
+  {
     path:'blogs',
-    component: BlogComponent
+    component: BlogGetComponent
   },
   {
     path:'post/create',
-    component: BlogCreateComponent
+    component: BlogCreateComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'blog/:id/:urlPart',
-    component: BlogGetComponent
+    component: BlogComponent
   },
   {
     path:'posts',
@@ -57,10 +65,15 @@ const routes: Routes = [
   },
   {
     path:'editor',
-    component: EditorComponent
+    component: EditorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'',
+    component: LandingComponent
+  },
+  {
+    path:'category/:id/:textPattern',
     component: LandingComponent
   },
 ];

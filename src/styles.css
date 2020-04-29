@@ -5,5 +5,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x:
 @media(min-width:1200px){
     .container{
         max-width: 1200px !important;
+        min-height: 345px;
+    }
+    .menu-col-4{
+        width: 600px;
+    }
+    .menu-right-border{
+        border-right: 1px solid #eee;
     }
     }
+

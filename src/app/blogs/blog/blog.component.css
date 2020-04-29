@@ -1,20 +1,30 @@
-.blog-image{
-    width:140px;
-    border-radius: 5px;;
-    float:left;
-    margin-right: 10px;
+.testClass{
+    background-color: aquamarine;
 }
-.blog-image-container
-{
-    margin-top: 10px;
-}
-
-.pagination{
-    margin-top: 10px;
+.content-sub-title,.content-title{
     text-align: center;
 }
-
-.pagination-container{
-    margin: auto;
-    margin-right: 0px;
+.blog-image{
+    text-align: center;
+}
+.main-image{
+    max-width: 90%;
+}
+.main-image-title{
+    color: #79797d;
+}
+.user-avatar-image{
+    border-radius:50px;
+    border: 1px solid #aaa;
+}
+.user-avatar{
+    float: left;
+    margin: 5px;
+}
+.user-name{
+    font-weight: bold;
+    cursor: pointer;
+}
+.blog-badges-share{
+    text-align: end;
 }

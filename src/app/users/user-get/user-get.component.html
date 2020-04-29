@@ -4,13 +4,13 @@
     </div>
     <div class="col-lg-10">
         <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12"  *ngFor="let tile of tiles">
+                <div class="col-lg-6 col-md-6 col-sm-12 user-details-card"  *ngFor="let tile of tiles">
                     <div class="user-avatar"><img class="user-avatar-image" src="{{tile.img}}" /></div>
                     <div class="user-details">
-                        <div class="user-name">{{tile.Name}}</div>
-                        <div class="user-about">{{tile.about}}</div>
-                        <div class="user-category">{{tile.category}}</div>
-                        <div class="user-vote">{{tile.vote}}</div>
+                        <a href="/user/1123/some user" class="user-name">{{tile.Name}}</a>
+                        <div class="user-about"><small>{{tile.about}}</small></div>
+                        <div class="user-category"><small>{{tile.category}}</small></div>
+                        <div class="user-vote"><small>{{tile.vote}}</small></div>
                     </div>
                 </div>
         </div>

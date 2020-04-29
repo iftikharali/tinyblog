@@ -1,0 +1,11 @@
+.user-profile-pic{
+    width:300px;
+}
+.user-profile-pic-container{
+    text-align: center;
+}
+.user-profile-name-holder{
+    padding-top: 10px;
+    padding-bottom: 10px;;
+    font-weight: bolder;
+}
