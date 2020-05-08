@@ -1,34 +1,80 @@
-<div [froalaEditor]>Hello, Froala!</div>
-<!-- 
+
+
 <div class="row">
     <div class="offset-lg-1 col-lg-10">
-        <h1 class="content-title"><input class="form-control mr-sm-2" type="text" ([ngModel])="title" placeholder="Title"></h1>
-        <h4 class="content-sub-title"> <input type="text" class="form-control mr-sm-2" ([ngModel])="subTitle" placeholder="Subtitle"></h4>
+        <div  *ngIf="!IsBlog">
+        <select class="custom-select">
+            <option selected>Select Blog</option>
+            <option value="1">Blog1</option>
+            <option value="2">Blog2</option>
+            <option value="3">Blog3</option>
+          </select>
+          <hr>
+        </div>
+        <h1 class="content-title"><input class="form-control mr-sm-2" type="text" [(ngModel)]="title" placeholder="Title"></h1>
+        <h4 class="content-sub-title"> <input type="text" class="form-control mr-sm-2" [(ngModel)]="subTitle" placeholder="Subtitle"></h4>
         <hr>
         <div class="blog-image" >
-            <input type="file" class="form-control mr-sm-2" ([ngModel])="subTitle" placeholder="Content Image">
-            <div class="main-image-title"><span><input type="text" class="form-control mr-sm-2" ([ngModel])="subTitle" placeholder="Content Image Subtitle"></span></div>
+            <img src="{{imageContent}}" class="main-image-preview" />
+            <input type="file" class="form-control mr-sm-2" placeholder="Content Image" (change)="previewImage($event)">
+            <div class="main-image-title"><span><input type="text" class="form-control mr-sm-2" [(ngModel)]="imageContentSubtitle" placeholder="Content Image Subtitle"></span></div>
             <hr>
         </div>
         <div class="editor">
-            <app-ngx-editor height="500px" min-height="200px" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>
+            <!-- <app-ngx-editor height="500px" min-height="200px" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor> -->
+            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="HtmlContent"></angular-editor>
         </div>
         <hr>
         <div class="row">
             
             <div class="col-lg-12">
-                <input type="text" class="form-control mr-sm-2" ([ngModel])="tags" placeholder="comma Separated tags">
+                <input type="text" class="form-control mr-sm-2" [(ngModel)]="tags" placeholder="comma Separated tags">
             </div>
         </div>
         <div class="separator-margin-top-10">
             <hr>
         </div>
         <div class="row">
-            <div class="offset-lg-9 col-lg-3">
-                <button type="button" class="btn btn-danger">Cancel</button>
-                <button type="button" class="btn btn-success">Save</button>
-                <button type="button" class="btn btn-primary">Preview</button>
+            <div class="offset-lg-6 col-lg-2">
+                <button type="button" class="btn btn-danger col-lg-12">Cancel</button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-success col-lg-12">Save</button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button"  data-toggle="modal" data-target="#postPreviewModal" class="btn btn-primary col-lg-12">Preview</button>
             </div>
         </div>
     </div>
-</div> -->
+</div>
+
+<!---- POST PREVIEW MODAL-->
+<div class="modal fade" id="postPreviewModal" tabindex="-1" role="dialog" aria-labelledby="postPreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postPreviewModalLabel">Preview</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col-lg-11">
+                <h1 class="content-title">{{title}}</h1>
+                <h4 class="content-sub-title">{{subTitle}}</h4>
+                <hr>
+                <div class="blog-image" >
+                    <img src="{{imageContent}}" class="main-image"/>
+                    <div class="main-image-title"><small>{{imageContentSubtitle}}</small></div>
+                    <hr>
+                </div>
+                <div class="text-justify" [innerHTML]="HtmlContent">
+                  
+                </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>

@@ -14,6 +14,7 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserLogoutComponent } from './users/user-logout/user-logout.component';
 import { AuthGuard } from './Utilities/auth.guard';
 import { UserComponent } from './users/user/user.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
 
 
 const routes: Routes = [
@@ -43,11 +44,24 @@ const routes: Routes = [
     component: UserComponent
   },
   {
+    path:':userId/blogs',
+    component: BlogGetComponent
+  },
+  {
+    path:':userId/posts',
+    component: PostGetComponent
+  },
+  {
     path:'blogs',
     component: BlogGetComponent
   },
   {
     path:'post/create',
+    component: PostCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'blog/create',
     component: BlogCreateComponent,
     canActivate: [AuthGuard]
   },
@@ -75,7 +89,7 @@ const routes: Routes = [
   {
     path:'category/:id/:textPattern',
     component: LandingComponent
-  },
+  }
 ];
 
 @NgModule({

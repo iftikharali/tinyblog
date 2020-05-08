@@ -14,6 +14,7 @@ export default class User {
   About: string;
   Categories: Array<Category>;
   ImageUrl: string;
+  ProfileUrl: string;
   IsActive: boolean;
   Vote: number;
   DateOfJoining: Date;

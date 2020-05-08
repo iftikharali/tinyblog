@@ -11,3 +11,10 @@
 .footer-separator-margin{
     height:10px;
 }
+.search-bar{
+    width: 224px;
+    margin-right: 46px;
+}
+.search-icon{
+    color:#bcbebf;
+}

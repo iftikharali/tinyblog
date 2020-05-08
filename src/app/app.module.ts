@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UsersService } from './users/userService/users.service'
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 
@@ -26,8 +26,10 @@ import { PostComponent } from './posts/post/post.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserLogoutComponent } from './users/user-logout/user-logout.component';
 import { TimeAgoPipe } from 'time-ago-pipe';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { UserComponent } from './users/user/user.component';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
+import { JwtInterceptor } from './Utilities/jwt.interceptor';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @Pipe({
   name: 'timeAgo',
@@ -52,7 +54,8 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
     UserLoginComponent,
     UserLogoutComponent,
     TimeAgoExtendsPipe,
-    UserComponent
+    UserComponent,
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -65,11 +68,13 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

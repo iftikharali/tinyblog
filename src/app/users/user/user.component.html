@@ -1,19 +1,20 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="user-profile-pic-container">
-            <img src="/assets/images/profile.jpg" class="user-profile-pic">
+            <img src="{{user?.ImageUrl}}" class="user-profile-pic">
         </div>
         <div>
             
-                <div class="col-lg-12 text-center user-profile-name-holder">Cras justo odio</div>
+            <div class="col-lg-12 text-center user-profile-name-holder"  *ngIf="!IsEditing">{{user?.Name}}</div>
+            <div class="col-lg-12 text-center user-profile-name-holder" *ngIf="IsEditing"><input type="file" (change)="previewImage($event)" name="profilePicture"><br> <input class="col-lg-10" type="text"  value="{{user?.Name}}"></div>
               
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="list-group list-group-horizontal text-center">
-                    <li class="list-group-item col-lg-4">Blogs <span class="badge badge-primary">9</span></li>
-                    <li class="list-group-item col-lg-4">Posts <span class="badge badge-primary">92</span></li>
-                    <li class="list-group-item col-lg-4">Votes <span class="badge badge-primary">9K+</span></li>
+                    <li class="list-group-item col-lg-4">Blogs <span class="badge badge-primary">{{user?.BlogsCount | shortNumber}}</span></li>
+                    <li class="list-group-item col-lg-4">Posts <span class="badge badge-primary">{{user?.PostsCount | shortNumber}}</span></li>
+                    <li class="list-group-item col-lg-4">Votes <span class="badge badge-primary">{{user?.Vote | shortNumber}}</span></li>
                   </ul>
             </div>
         </div>
@@ -22,9 +23,16 @@
         <div class="details">
             <div class="row">
                 <div class="col-lg-12">
-                    <b>About</b><br><br>
-                    <div class="user-about">
-                        Fusce augue nunc, ornare in risus at, porttitor molestie lectus. Aliquam a fermentum nulla. Sed molestie tristique leo eget lobortis. Pellentesque molestie pulvinar massa laoreet tristique. Cras convallis ac ante vitae lacinia. Nunc imperdiet elementum congue. In hac habitasse platea dictumst. Suspendisse iaculis bibendum dolor vitae blandit. Phasellus ac diam placerat, tempor mi ut, luctus dolor. Nulla facilisi.
+                    <b>About</b>
+                    <div class="pull-right"  *ngIf="currentUser && currentUser?.UserID==user?.UserID">
+                        <a href="javascript:void(0);" (click)="editUserProfile()" *ngIf="!IsEditing">Edit</a>
+                        <a href="javascript:void(0);" (click)="editUserProfile()" *ngIf="IsEditing">Cancel</a>
+                     </div><br><br>
+                    <div class="user-about"  *ngIf="!IsEditing">
+                        {{user?.About}}
+                    </div>
+                    <div class="user-about" *ngIf="IsEditing">
+                        <textarea name="user-about" class="user-about-textarea">{{user?.About}}</textarea>
                     </div>
                     <br>
                     
@@ -33,38 +41,36 @@
                             <tr>
                                 <th>Email:</th>
                                 <td>
-                                    <div class="">email1@test.com</div>
-                                    <input *ngIg="IsEditing" type="text"></td>
+                                    <div class=""  *ngIf="!IsEditing">{{user?.Email}}</div>
+                                    <input *ngIf="IsEditing" type="text" value="{{user?.Email}}"></td>
                             </tr>
                             <tr>
                                 <th>Password:</th>
                                 <td>
-                                    <div class="">*************</div>
-                                    <input *ngIg="IsEditing" type="password"></td>
+                                    <div class="" *ngIf="!IsEditing">*************</div>
+                                    <input *ngIf="IsEditing" type="password" placeholder="Change Password"></td>
                             </tr>
                             <tr>
                                 <th>Phone:</th>
                                 <td>
-                                    <div class="">988345098345</div>
-                                    <input *ngIg="IsEditing" type="text"></td>
+                                    <div class="" *ngIf="!IsEditing">{{user?.Phone}}</div>
+                                    <input *ngIf="IsEditing" type="text" value="{{user?.Phone}}"></td>
                             </tr>
                             <tr>
                                 <th>Website:</th>
                                 <td>
-                                    <div class="">https://www.testing.com</div>
-                                    <input *ngIg="IsEditing" type="text"></td>
+                                    <div class="" *ngIf="!IsEditing">{{user?.Website}}</div>
+                                    <input *ngIf="IsEditing" type="text" value="{{user?.Website}}"></td>
                             </tr>
                             <tr>
                                 <th>Date of joining:</th>
                                 <td>
-                                    <div class="">12th january 2001</div>
-                                    <input *ngIg="IsEditing" type="text"></td>
+                                    <div class="">{{user?.DateOfJoining | timeAgo}}</div>
                             </tr>
                             <tr>
                                 <th>Last active:</th>
                                 <td>
-                                    <div class="">a minute ago</div>
-                                    <input *ngIg="IsEditing" type="text"></td>
+                                    <div class="">{{user?.LastActive | timeAgo}}</div>
                             </tr>
                         </tbody>
                     
@@ -81,9 +87,7 @@
                 <div class="col-lg-12">
                     <b>Topics involved in</b><br><br>
                     <ul class="list-group">
-                        <li class="list-group-item">Amazon Web Service <span class="badge badge-primary">9</span></li>
-                        <li class="list-group-item">Comedy <span class="badge badge-primary">92</span></li>
-                        <li class="list-group-item">Aritificial Intelegence <span class="badge badge-primary">9K+</span></li>
+                        <li class="list-group-item" *ngFor="let category of user?.Categories">{{category?.Name}} <span class="badge badge-primary">{{category?.PostCount}}</span></li>
                       </ul>
                 </div><br>
                 
@@ -91,8 +95,22 @@
         </div>
     </div>
     </div>
+    <div class="row"  *ngIf="IsEditing">
+        <div class="offset-lg-4 col-lg-2">
+            <div class="profile-controls text-center">
+                <button class="btn btn-primary col-lg-12" (click)="saveProfile()">Save</button>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="profile-controls text-center">
+                <button class="btn btn-danger col-lg-12" (click)="cancelProfileEdit()">Cancel</button>
+            </div>
+        </div>
+        
+      </div>
     <hr>
   
+
     <div class="row">
         <div class="col-lg-10">
           <div class="advertiser">

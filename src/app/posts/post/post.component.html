@@ -15,15 +15,27 @@
     </div>
     </div>
     <div class="col-lg-2 d-none d-lg-block">
+      <div class="post-blog-detail">
+        <div class="post-blog-image">
+        <img src="http://localhost:4200/assets/images/coverimage.jpg" class="img-fluid post-blog-content-image">
+      </div>
+      <div class="text-center post-blog-title">
+        <h5>The custom blog</h5>
+      </div>
+      <div class="text-center post-blog-button-group">
+        <button type="button" class="badge badge-primary col-lg-12">Subscribe</button>
+      </div>
+      <hr>
       <div class="advertiser">
-        <img style="border: 1px solid black; width: 200px;" class="advertiser-image" src="../assets/images/advertiser.jpg" />
+        <img style="border: 1px solid black; width: 200px;" class="advertiser-image img-fluid" src="../assets/images/advertiser.jpg" />
     </div>
     </div>
+</div>
 </div>
 <div class="row">
   <div class="col-lg-10">
     <div class="advertiser">
-      <img style="border: 1px solid black;" class="advertiser-image col-lg-10" src="../assets/images/advertiserHorizontal.jpg" />
+      <img class="img-fluid advertiser-image col-lg-12" src="../assets/images/advertiserHorizontal.jpg" />
   </div>
   </div>
 </div>
@@ -31,8 +43,7 @@
     <div class=" col-lg-10">
         <hr>
         <div class="post-badges-share">
-          <button class="badge badge-primary">Subscribe</button>&nbsp;
-          <button class="badge badge-secondary">Recommend <span class="badge badge-danger">{{post.Votes}}</span></button>&nbsp;
+          <button class="badge badge-secondary">Vote <span class="badge badge-danger">{{post.Votes}}</span></button>&nbsp;
           <button class="badge badge-success">Share</button>
         </div>
         <hr>
@@ -55,14 +66,15 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-8 col-md-8 col-sm-8">
     <a href="{{post.Previous}}" class="btn btn-success"><< Previous post</a>
   </div>
-  <div class="col-lg-2">
+  <div class="col-lg-2 col-md-2 col-sm-4">
     <a href="{{post.Next}}" class="btn btn-success float-right">Next post >></a>
   </div>
+  
+<hr>
 </div>
-
 <div class="row">
   <div class="offset-lg-2 col-lg-6">
     <button (click)="loadComment(post.PostKey)" class="btn btn-default col-lg-12 border" data-toggle="modal" data-target="#postCommentModal" >Comments</button>

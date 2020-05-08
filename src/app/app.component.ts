@@ -5,6 +5,7 @@ import Menu from './Models/Menu';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './users/userService/authentication.service';
 import User from './Models/User';
+import { GlobalConstants } from './Constants/GlobalConstants';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   centerMenus:Menu[] =[];
   menus: Menu[] =[];
   currentUser: User;
+  searchBox:string;
   searchForm: FormGroup;
   constructor(private fb: FormBuilder, private menuService:MenusService,
     private router: Router,
@@ -44,7 +46,9 @@ export class AppComponent {
       SearchContent: ['']
     });
    }
-
+   search(){
+     this.router.navigate([''], { queryParams: { search: this.searchBox.trim().replace(/ /g,"-") }});
+   }
    logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);

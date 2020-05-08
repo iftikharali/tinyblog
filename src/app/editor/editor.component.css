@@ -10,3 +10,7 @@
 .main-image-title{
     color: #79797d;
 }
+.main-image-preview{
+    float: left;
+    max-height: 100px;
+}
