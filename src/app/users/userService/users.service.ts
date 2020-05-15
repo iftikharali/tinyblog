@@ -18,17 +18,10 @@ export class UsersService {
     console.log(this.currentUser);
   }
 
-  addUser(Name,Phone, Email,Password,DateOfBirth){
-    const UserObject ={
-      Name,
-      Phone,
-      Email,
-      Password,
-      DateOfBirth
-    };
+  addUser(user):Observable<User>{
 
-    this.client.post(GlobalConstants.BASE_URL+ServiceUrls.USER_GET,UserObject)
-      .subscribe(result => console.log('User posted successfully'));
+    return this.client.post<User>(GlobalConstants.BASE_URL+ServiceUrls.USER_GET,user);
+      
   }
   getUser(UserId):Observable<User>{
     return this.client.get<User>(GlobalConstants.BASE_URL+ServiceUrls.USER_GET+UserId);

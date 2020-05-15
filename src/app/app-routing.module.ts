@@ -15,6 +15,8 @@ import { UserLogoutComponent } from './users/user-logout/user-logout.component';
 import { AuthGuard } from './Utilities/auth.guard';
 import { UserComponent } from './users/user/user.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { CategoryComponent } from './categories/category/category.component';
+import { CategoryAddComponent } from './categories/category-add/category-add.component';
 
 
 const routes: Routes = [
@@ -88,7 +90,11 @@ const routes: Routes = [
   },
   {
     path:'category/:id/:textPattern',
-    component: LandingComponent
+    component: CategoryComponent
+  },
+  {
+    path:'category/create',
+    component: CategoryAddComponent
   }
 ];
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../userService/users.service';
-import { HttpClient } from '@angular/common/http';
+import User from 'src/app/Models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-add',
@@ -12,7 +13,9 @@ export class UserAddComponent implements OnInit {
 
   angForm: FormGroup;
   searchForm: FormGroup;
-  constructor(private fb: FormBuilder, private us: UsersService) {
+  user:User;
+  
+  constructor(private fb: FormBuilder, private us: UsersService,private router:Router) {
     this.createForm();
    }
 
@@ -35,7 +38,15 @@ export class UserAddComponent implements OnInit {
      this.addUsers(Name,Phone, Email, Password, DateOfBirth);
    }
    addUsers(Name, Phone, Email, Password, DateOfBirth){
-     this.us.addUser(Name, Phone, Email, Password, DateOfBirth);
+     this.user = new User();
+     this.user.Name = Name;
+     this.user.Phone = Phone;
+     this.user.Email = Email;
+     this.user.Password = Password;
+     this.user.DateOfBirth = DateOfBirth;
+     this.us.addUser(this.user).subscribe(response =>{
+       this.router.navigate(["/user/login"]);
+     });
    }
   ngOnInit() {
   }

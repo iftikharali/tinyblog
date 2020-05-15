@@ -47,4 +47,12 @@ export class PostService {
 
     return this.client.post<any>(GlobalConstants.BASE_URL+ServiceUrls.POST_SAVE,formData);
   }
+  createComment(Content,PostKey):Observable<Comment>{
+    let comment = new Comment();
+    comment.Content = Content;
+    return this.client.post<Comment>(GlobalConstants.BASE_URL+"post/"+PostKey+"/"+ServiceUrls.COMMENT_SAVE,comment);
+  }
+  vote(postKey):Observable<any>{
+    return this.client.post<any>(GlobalConstants.BASE_URL+ServiceUrls.VOTE_POST(postKey),{});
+  }
 }

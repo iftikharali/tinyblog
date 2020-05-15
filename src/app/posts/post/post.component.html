@@ -43,7 +43,7 @@
     <div class=" col-lg-10">
         <hr>
         <div class="post-badges-share">
-          <button class="badge badge-secondary">Vote <span class="badge badge-danger">{{post.Votes}}</span></button>&nbsp;
+          <button class="badge badge-secondary" (click)="vote()">Vote <span class="badge badge-danger">{{post.Votes}}</span></button>&nbsp;
           <button class="badge badge-success">Share</button>
         </div>
         <hr>
@@ -103,7 +103,6 @@
           </div>
     </div>
 </div>
-
 <div class="modal fade" id="postCommentModal" tabindex="-1" role="dialog" aria-labelledby="postCommentModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -118,8 +117,8 @@
           <div class="col-lg-12">
                 <div class="list-group">
                   <div class="list-group-item list-group-item-action flex-column align-items-start">
-                  <textarea class="col-lg-12" placeholder="Type your comment..."></textarea><br>
-                  <button class="btn btn-success" type="button">Comment</button>
+                  <textarea class="col-lg-12" [(ngModel)]="commentContent" placeholder="Type your comment..."></textarea><br>
+                  <button class="btn btn-success" (click)="createComment()" type="button">Comment</button>
                   </div>
                   <hr>
                     <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let comment of commentsItem">

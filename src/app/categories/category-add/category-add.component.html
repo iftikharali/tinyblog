@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-12">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <input type="text" [(ngModel)]="categoryName" class="col-lg-12" placeholder="Category Name" /><br><hr>
+            <textarea class="col-lg-12" [(ngModel)]="categoryDescription" placeholder="Category description..."></textarea><br>
+            <button class="btn btn-success" (click)="SaveCategory()" type="button">Add Category</button>
+            </div>
+            <hr>
+              <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let category of categoryList">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{category?.Name}}</h5>
+                  <small>{{category?.CreatedAt | timeAgo}}</small>
+                </div>
+                <p class="mb-1">{{category.Description}}</p>
+                <small>{{category?.PostCount}} Post Attached</small>
+              </div>
+            </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+    <button *ngIf="categoryAvailableInBuffer" (click)="loadMoreCategory()" class="btn btn-default border col-lg-12">Load more </button>
+  </div>
+  </div>

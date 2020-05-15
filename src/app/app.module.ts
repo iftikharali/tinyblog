@@ -30,6 +30,8 @@ import { UserComponent } from './users/user/user.component';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { JwtInterceptor } from './Utilities/jwt.interceptor';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CategoryComponent } from './categories/category/category.component';
+import { CategoryAddComponent } from './categories/category-add/category-add.component';
 
 @Pipe({
   name: 'timeAgo',
@@ -55,7 +57,9 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
     UserLogoutComponent,
     TimeAgoExtendsPipe,
     UserComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    CategoryComponent,
+    CategoryAddComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ export class PostComponent implements OnInit {
   comments:Comment[] =[];
   commentsItem:Comment[]=[];
   commentLoaded = 0;
+  commentContent:string;
   IsCommentLoaded:boolean = false;
   commentAvailableInBuffer:boolean = false;
   constructor(private service:PostService, private route: ActivatedRoute) { }
@@ -61,5 +62,19 @@ export class PostComponent implements OnInit {
       }
     }
   }
+  createComment(){
+    this.service.createComment(this.commentContent,this.post.PostKey).subscribe(response =>
+      {
+          this.commentContent = "";
+          let comment = new Comment();
+          comment.CreatedAt = new Date(Date.now());
+          this.comments.push(comment);
+      });
+  }
 
+  vote(){
+    this.service.vote(this.post.PostKey).subscribe(response => {
+      //disable the vote button
+    })
+  }
 }

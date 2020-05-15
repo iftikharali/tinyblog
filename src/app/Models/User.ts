@@ -1,5 +1,4 @@
 import Category from './Category';
-import { Blog } from '../blogs/Models/Blog';
 
 export default class User { 
   UserKey: number;
