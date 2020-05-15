@@ -3,9 +3,11 @@
 <div class="card">  
     <div class="card-body">  
       <form [formGroup]="loginForm">  
-        
+        <div *ngIf="loginFailed" class="alert alert-danger">  
+          {{loginFailedMessage}}
+      </div>
         <div class="form-group">  
-          <label class="col-md-4">Email</label>  
+          <label class="col-md-4">Email or User Id</label>  
           <input formControlName="Email" type="text" class="form-control" />  
         </div> 
         

@@ -32,7 +32,7 @@
                         {{user?.About}}
                     </div>
                     <div class="user-about" *ngIf="IsEditing">
-                        <textarea name="user-about" class="user-about-textarea">{{user?.About}}</textarea>
+                        <textarea name="user-about" [(ngModel)]="user.About" class="user-about-textarea">{{user?.About}}</textarea>
                     </div>
                     <br>
                     
@@ -42,7 +42,7 @@
                                 <th>Email:</th>
                                 <td>
                                     <div class=""  *ngIf="!IsEditing">{{user?.Email}}</div>
-                                    <input *ngIf="IsEditing" type="text" value="{{user?.Email}}"></td>
+                                    <input *ngIf="IsEditing"  [(ngModel)]="user.Email" type="text" value="{{user?.Email}}"></td>
                             </tr>
                             <tr>
                                 <th>Password:</th>
@@ -54,13 +54,13 @@
                                 <th>Phone:</th>
                                 <td>
                                     <div class="" *ngIf="!IsEditing">{{user?.Phone}}</div>
-                                    <input *ngIf="IsEditing" type="text" value="{{user?.Phone}}"></td>
+                                    <input *ngIf="IsEditing"  [(ngModel)]="user.Phone" type="text" value="{{user?.Phone}}"></td>
                             </tr>
                             <tr>
                                 <th>Website:</th>
                                 <td>
-                                    <div class="" *ngIf="!IsEditing">{{user?.Website}}</div>
-                                    <input *ngIf="IsEditing" type="text" value="{{user?.Website}}"></td>
+                                    <div class="" *ngIf="!IsEditing"><a href="{{user?.Website}}" target="_blank" >{{user?.Website}}</a></div>
+                                    <input *ngIf="IsEditing"  [(ngModel)]="user.Website" type="text" value="{{user?.Website}}"></td>
                             </tr>
                             <tr>
                                 <th>Date of joining:</th>

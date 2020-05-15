@@ -4,13 +4,13 @@
     </div>
     <div class="col-lg-10">
         <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 user-details-card"  *ngFor="let tile of tiles">
-                    <div class="user-avatar"><img class="user-avatar-image" src="{{tile.img}}" /></div>
+                <div class="col-lg-6 col-md-6 col-sm-12 user-details-card"  *ngFor="let user of users">
+                    <div class="user-avatar"><img class="user-avatar-image" src="{{user.ImageUrl}}" /></div>
                     <div class="user-details">
-                        <a href="/user/1123/some user" class="user-name">{{tile.Name}}</a>
-                        <div class="user-about"><small>{{tile.about}}</small></div>
-                        <div class="user-category"><small>{{tile.category}}</small></div>
-                        <div class="user-vote"><small>{{tile.vote}}</small></div>
+                        <a href="{{user.ProfileUrl}}" class="user-name">{{user.Name}}</a>
+                        <div class="user-about"><small>{{user.About}}</small></div>
+                        <div class="user-category"><small>{{user.Category}}</small></div>
+                        <div class="user-vote"><small>{{user.Vote}}</small></div>
                     </div>
                 </div>
         </div>
@@ -18,18 +18,17 @@
 
     </div>
 </div>
+
 <div class="row">
   <div class="col-lg-12">
+  <div class="pagination-container">
     <nav aria-label="Page navigation">
       <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item disabled"><a class="page-link" href="#">. . .</a></li>
-        <li class="page-item"><a class="page-link" href="#">29</a></li>
-        <li class="page-item"><a class="page-link" href="#">30</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li [ngClass]="{'disabled':DisablePreviousButton}" (click)="previousPage()" class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+        <li [ngClass]="{'active': IsActivePageNumber(pageNumberButton),'disabled': IsPageNumberDots(pageNumberButton)}" class="page-item" (click)="GoToPage(pageNumberButton)" *ngFor="let pageNumberButton of PageNumberButtons"><a class="page-link" href="javascript:void(0)">{{pageNumberButton}}</a></li>
+        <li [ngClass]="{'disabled':DisableNextButton}" (click)="nextPage()" class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
       </ul>
     </nav>
-  </div>
+  </div> 
+</div>
 </div>

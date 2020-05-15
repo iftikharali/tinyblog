@@ -14,6 +14,8 @@ export class UserLoginComponent implements OnInit {
 
   loginForm: FormGroup;
   returnUrl: string;
+  loginFailed:boolean = false;
+  loginFailedMessage:string;
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router, private authenticationService: AuthenticationService) {
@@ -40,10 +42,13 @@ export class UserLoginComponent implements OnInit {
     .subscribe(
         data => {
             this.router.navigate([this.returnUrl]);
+            this.loginFailed = false;
         },
         error => {
-           console.log(error);
-            
+           console.log(error.error.message);
+           //this.loginForm.setErrors({invalid:true});
+           this.loginFailed = true;
+           this.loginFailedMessage = error.error.message;
         });
     console.log('logged in sucessfully');
   }

@@ -31,13 +31,16 @@ export class UsersService {
       .subscribe(result => console.log('User posted successfully'));
   }
   getUser(UserId):Observable<User>{
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type':  'application/json',
-    //     'Authorization': 'Bearer '+this.currentUser.Token
-    //   })
-    // };
     return this.client.get<User>(GlobalConstants.BASE_URL+ServiceUrls.USER_GET+UserId);
+  }
+
+  getUsers():Observable<User[]>{
+    return this.client.get<User[]>(GlobalConstants.BASE_URL+ServiceUrls.USER_LIST_GET);
+  }
+
+  saveUserWithImage(formData){
+    this.client.put(GlobalConstants.BASE_URL+ServiceUrls.USER_SAVE(1),formData)
+      .subscribe(result => console.log('User posted successfully'));
   }
 
 

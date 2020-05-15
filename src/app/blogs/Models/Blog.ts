@@ -15,7 +15,7 @@ export class Blog {
     Url: string
     SortUrl: string
     Content: string
-    Tags: Array<Tag>[];
+    Tags: Tag[];
     IsActive:  boolean;
     Subscribers: Array<User>[];
     Votes: number;

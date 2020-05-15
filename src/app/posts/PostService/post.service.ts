@@ -7,6 +7,7 @@ import { Utility } from 'src/app/Utilities/Utility';
 import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
 import { Comment } from '../models/Comment';
+import { BlogEditorRequest } from 'src/app/editor/editor.model';
 
 
 
@@ -31,5 +32,19 @@ export class PostService {
   getComments(postKey:number):Observable<Comment[]>
   {
     return this.client.get<Comment[]>(GlobalConstants.BASE_URL+ServiceUrls.COMMENT_LIST_GET(postKey))
+  }
+  save(postRequest:BlogEditorRequest):Observable<any>{
+    const formData = new FormData();
+      if(postRequest.imageContent){
+        formData.append('file', postRequest.imageContent, postRequest.imageContent.name);
+      }
+      formData.append("BlogKey",postRequest.blogId.toString());
+      formData.append("Title",postRequest.title);
+      formData.append("content",postRequest.HtmlContent);
+      formData.append("SubTitle",postRequest.subTitle);
+      formData.append("MainContentImageSubtitle",postRequest.imageContentSubtitle);
+      formData.append("Tags",postRequest.tags);
+
+    return this.client.post<any>(GlobalConstants.BASE_URL+ServiceUrls.POST_SAVE,formData);
   }
 }

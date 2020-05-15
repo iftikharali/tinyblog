@@ -3,11 +3,9 @@
 <div class="row">
     <div class="offset-lg-1 col-lg-10">
         <div  *ngIf="!IsBlog">
-        <select class="custom-select">
+        <select class="custom-select" [(ngModel)]="blogId">
             <option selected>Select Blog</option>
-            <option value="1">Blog1</option>
-            <option value="2">Blog2</option>
-            <option value="3">Blog3</option>
+            <option value="{{blog.BlogKey}}" *ngFor="let blog of blogList">{{blog.Title}}</option>
           </select>
           <hr>
         </div>
@@ -39,7 +37,7 @@
                 <button type="button" class="btn btn-danger col-lg-12">Cancel</button>
             </div>
             <div class="col-lg-2">
-                <button type="button" class="btn btn-success col-lg-12">Save</button>
+                <button type="button" (click)="Save()" class="btn btn-success col-lg-12">Save</button>
             </div>
             <div class="col-lg-2">
                 <button type="button"  data-toggle="modal" data-target="#postPreviewModal" class="btn btn-primary col-lg-12">Preview</button>

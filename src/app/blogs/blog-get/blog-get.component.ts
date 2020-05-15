@@ -23,7 +23,7 @@ export class BlogGetComponent implements OnInit {
     var subArray =[];
     var currentpage = this.CurrentPageNumber;
     if(this.MaxPageNumber<7){
-      return Array.from(Array(this.MaxPageNumber).keys()).map(num=>{++num});
+      return Array.from(Array(this.MaxPageNumber).keys()).map(num=>{return ++num});
     }else{
       if(currentpage<4){
         subArray.push(1);

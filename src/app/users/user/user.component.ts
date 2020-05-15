@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   user:User;
   IsEditing:boolean;
   currentUser:User;
+  file:File;
   constructor(private service:UsersService, private userAuthenticationService:AuthenticationService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class UserComponent implements OnInit {
     
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.file = file;
       reader.readAsDataURL(file);
     
       reader.onload = () => {
@@ -47,9 +49,32 @@ export class UserComponent implements OnInit {
     }
   }
 
-  saveProfile(){
-
-  }
+  public saveProfile(){
+   
+      //let fileToUpload = <File>files[0];
+      const formData = new FormData();
+      if(this.file){
+        formData.append('file', this.file, this.file.name);
+      }
+      formData.append('ImageUrl',this.user.ImageUrl);
+      formData.append('Name', this.user.Name);
+      formData.append('Email', this.user.Email);
+      formData.append('About', this.user.About);
+      formData.append('Phone', this.user.Phone);
+      formData.append('Website', this.user.Website);
+      this.service.saveUserWithImage(formData);
+   
+      // this.http.post('https://localhost:5001/api/upload', formData, {reportProgress: true, observe: 'events'})
+      //   .subscribe(event => {
+      //     if (event.type === HttpEventType.UploadProgress)
+      //       this.progress = Math.round(100 * event.loaded / event.total);
+      //     else if (event.type === HttpEventType.Response) {
+      //       this.message = 'Upload success.';
+      //       this.onUploadFinished.emit(event.body);
+      //     }
+      //   });
+    }
+  
   cancelProfileEdit(){
 
   }
