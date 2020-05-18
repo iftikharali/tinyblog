@@ -4,6 +4,8 @@ import { PostService } from '../posts/PostService/post.service';
 import { Blog } from '../blogs/Models/Blog';
 import { Post } from '../posts/models/Post';
 import { BlogEditorRequest } from './editor.model';
+import Category from '../Models/Category';
+import { CategoryService } from '../categories/CategoryService/category.service';
 
 @Component({
   selector: 'blog-editor',
@@ -14,7 +16,7 @@ export class EditorComponent implements OnInit {
   @Input() public IsBlog:boolean = false;
   @Output() public editorEvent = new EventEmitter();
   service:BlogService|PostService;
-  constructor(private blogService:BlogService,private postService:PostService) {
+  constructor(private blogService:BlogService,private postService:PostService, private categoryService:CategoryService) {
 
    }
   HtmlContent:string;
@@ -26,6 +28,8 @@ export class EditorComponent implements OnInit {
   image:File;
   blogId:number;
   blogList:Blog[];
+  CategoryId:number;
+  categories:Category[];
   ngOnInit() {
     if(this.IsBlog){
       this.service = this.blogService;
@@ -39,7 +43,9 @@ export class EditorComponent implements OnInit {
     }else{
       this.blogService.getUsersBlogList().subscribe(response => {
         this.blogList = response;
-        console.log(response);
+      });
+      this.categoryService.getCategories().subscribe(response => {
+        this.categories = response;
       });
     }
   }
@@ -69,6 +75,7 @@ Save(){
     request.imageContentSubtitle = this.imageContentSubtitle;
     request.imageContent = this.image;
     request.blogId = this.blogId;
+    request.categoryId = this.CategoryId;
     this.service.save(request).subscribe(response => {
       console.log(response);
     });

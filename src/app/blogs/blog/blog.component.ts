@@ -144,5 +144,14 @@ export class BlogComponent implements OnInit {
     }
   }
 
-
+Subscribe(){
+   this.blogService.SubscribeUser(this.blog.BlogKey).subscribe(response =>{
+     this.blog.SubscriberCount++;
+   });
+}
+Recommend(){
+    this.blogService.Recommend(this.blog.BlogKey).subscribe(response =>{
+      this.blog.Recommend++;
+    });
+}
 }

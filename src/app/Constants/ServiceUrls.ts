@@ -18,4 +18,6 @@ export class ServiceUrls {
     public static CATEGORY_LIST_GET = "categories/";
     public static COMMENT_SAVE = "comment/";
     public static VOTE_POST = (postId) => `post/vote/${postId}`;
+    public static BLOG_SEUBSCRIBE = 'blog/subscribe';
+    public static BLOG_RECOMMEND = 'blog/recommend';
   }

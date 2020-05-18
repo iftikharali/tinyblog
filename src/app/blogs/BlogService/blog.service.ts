@@ -41,4 +41,12 @@ export class BlogService {
 
     return this.httpClient.post<any>(GlobalConstants.BASE_URL+ServiceUrls.BLOG_SAVE,formData);
   }
+
+  SubscribeUser(BlogKey):Observable<any>{
+    return this.httpClient.post<any>(GlobalConstants.BASE_URL+ServiceUrls.BLOG_SEUBSCRIBE,BlogKey);
+  }
+
+  Recommend(BlogKey):Observable<any>{
+    return this.httpClient.post<any>(GlobalConstants.BASE_URL+ServiceUrls.BLOG_RECOMMEND,BlogKey);
+  }
 }

@@ -9,8 +9,8 @@
           <div class="main-image-title"><small>{{blog.MainContentImageSubtitle}}</small></div>
           <hr>
           <div class="blog-badges-share">
-            <button class="badge badge-primary">Subscribe</button>&nbsp;
-            <button class="badge badge-secondary">Recommend <span class="badge badge-danger" *ngIf="blog.Recommends">{{blog.Recommends.length}}</span></button>&nbsp;
+            <button class="badge badge-primary" (click)="Subscribe()">Subscribe <span class="badge badge-danger" >{{blog.SubscriberCount}}</span></button>&nbsp;
+            <button class="badge badge-secondary" (click)="Recommend()">Recommend <span class="badge badge-danger" >{{blog.Recommend}}</span></button>&nbsp;
             <button class="badge badge-success">Share</button>
           </div>
           <hr>
@@ -35,8 +35,7 @@
           <div class="user-details">
               <div class="user-name">{{blog.Owner?.Name}}</div>
               <div class="user-about"><small>{{blog.Owner?.About}}</small></div>
-              <div class="user-category" *ngIf="blog.Owner?.Categories"><small>{{blog.Owner?.Categories[0]?.Name}}</small></div>
-              <div class="user-vote"><small>{{blog.Owner?.Vote}}</small></div>
+              <div class="user-vote"><small>{{blog.Owner?.BlogCount}} Blogs | {{blog.Owner?.PostCount}} Posts </small></div>
           </div>
       </div>
   </div>

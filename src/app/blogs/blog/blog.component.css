@@ -2,7 +2,7 @@
     background-color: aquamarine;
 }
 .content-sub-title,.content-title{
-    text-align: center;
+    /*text-align: center;*/
 }
 .blog-image{
     text-align: center;
@@ -16,6 +16,8 @@
 .user-avatar-image{
     border-radius:50px;
     border: 1px solid #aaa;
+    width: 100px;
+    height: 100px;
 }
 .user-avatar{
     float: left;

@@ -42,6 +42,7 @@ export class PostService {
       formData.append("Title",postRequest.title);
       formData.append("content",postRequest.HtmlContent);
       formData.append("SubTitle",postRequest.subTitle);
+      formData.append("CategoryKey",postRequest.categoryId.toString());
       formData.append("MainContentImageSubtitle",postRequest.imageContentSubtitle);
       formData.append("Tags",postRequest.tags);
 

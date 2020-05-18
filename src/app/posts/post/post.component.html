@@ -17,13 +17,13 @@
     <div class="col-lg-2 d-none d-lg-block">
       <div class="post-blog-detail">
         <div class="post-blog-image">
-        <img src="http://localhost:4200/assets/images/coverimage.jpg" class="img-fluid post-blog-content-image">
+        <img src="{{post.Blog?.MainContentImageUrl}}" class="img-fluid post-blog-content-image">
       </div>
       <div class="text-center post-blog-title">
-        <h5>The custom blog</h5>
+        <h5>{{post.Blog?.Title}}</h5>
       </div>
       <div class="text-center post-blog-button-group">
-        <button type="button" class="badge badge-primary col-lg-12">Subscribe</button>
+        <button type="button" (click)="Subscribe()" class="badge badge-primary col-lg-12">Subscribe  <span class="badge badge-danger" >{{post.Blog?.SubscriberCount}}</span></button>
       </div>
       <hr>
       <div class="advertiser">
@@ -53,9 +53,8 @@
             </div>
             <div class="user-details">
                 <div class="user-name">{{post.Author?.Name}}</div>
-                <div class="user-about"><small>{{post.Author?.About}}</small></div>
-                <div class="user-category"><small *ngIf="post.Author?.Categories && post.Author?.Categories.length>0">{{post.Author?.Categories[0]?.Name}}</small></div>
-                <div class="user-vote"><small>{{post.Author?.Vote}}</small></div>
+                <div class="user-about"><small data-toggle="tooltip" data-placement="top" title="{{post.Author?.About}}">{{post.Author?.About?.substring(0,35)}}</small></div>
+                <div class="user-vote"><small>{{post.Author?.BlogCount}} Blogs, {{post.Author?.PostCount}} Posts</small></div>
             </div>
         </div>
     </div>
@@ -123,20 +122,12 @@
                   <hr>
                     <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let comment of commentsItem">
                       <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{comment?.CreatedBy?.Name}}</h5>
+                        <strong class="mb-1">{{comment?.CreatedBy?.Name}}</strong>
                         <small>{{comment.CreatedAt | timeAgo}}</small>
                       </div>
                       <p class="mb-1">{{comment.Content}}</p>
                       <small></small>
                     </div>
-                    <!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-muted">3 days ago</small>
-                      </div>
-                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                      <small class="text-muted">Donec id elit non mi porta.</small>
-                    </a> -->
                   </div>
             </div>
         </div>

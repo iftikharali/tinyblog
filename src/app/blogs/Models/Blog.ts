@@ -1,6 +1,5 @@
 import User from 'src/app/Models/User';
 import Tag from 'src/app/Models/Tag';
-import { Recomend } from './Recommend';
 
 export class Blog {
     BlogKey: number
@@ -19,7 +18,8 @@ export class Blog {
     IsActive:  boolean;
     Subscribers: Array<User>[];
     Votes: number;
-    Recommends: Array<Recomend>[];
+    SubscriberCount:number;
+    Recommend: number;
     CreatedAt: Date
     CreatedBy: User
     UpdatedAt: Date

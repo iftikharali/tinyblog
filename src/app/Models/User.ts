@@ -18,8 +18,8 @@ export default class User {
   Vote: number;
   DateOfJoining: Date;
   LastActive: Date;
-  BlogsCount: number;
-  PostsCount: number;
+  BlogCount: number;
+  PostCount: number;
   Token: string;
   Comments: Array<Comment>;
   CreatedAt: Date;

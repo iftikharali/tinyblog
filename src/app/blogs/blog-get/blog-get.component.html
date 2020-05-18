@@ -1,8 +1,5 @@
 <div class="row">
-  <div class="col-lg-1">
-
-  </div>
-  <div class="col-lg-10">
+  <div class="col-lg-12">
       <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12"  *ngFor="let blog of blogItems">
                   <div class="blog-image-container"><img class="blog-image" src="{{blog.MainContentImageUrl}}" /></div>
@@ -10,7 +7,7 @@
                       <div class="blog-title"><a href="{{blog.Url}}" target="_blank" > {{blog.Title}}</a></div>
                       <div class="blog-subtitle">{{blog.SubTitle}}</div>
                       <div class="blog-category"><small><i>By {{blog.Owner?.Name}}</i></small></div>
-                      <div class="blog-vote"><small>{{blog.Votes}}</small></div>
+                      <div class="blog-vote"><small>{{blog.SubscriberCount}} Subscribers</small></div>
                   </div>
               </div>
       </div>

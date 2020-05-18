@@ -11,6 +11,9 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root'
 })
 export class UsersService {
+  deleteUser(UserKey: number) {
+    return this.client.delete<any>(GlobalConstants.BASE_URL+ServiceUrls.USER_GET+UserKey);
+  }
   currentUser:User;
   constructor(private client: HttpClient, private authenticationService:AuthenticationService) { 
     

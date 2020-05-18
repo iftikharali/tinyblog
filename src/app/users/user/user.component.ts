@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../userService/users.service';
 import { AuthenticationService } from '../userService/authentication.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import User from 'src/app/Models/User';
 
 @Component({
@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   IsEditing:boolean;
   currentUser:User;
   file:File;
-  constructor(private service:UsersService, private userAuthenticationService:AuthenticationService, private route:ActivatedRoute) { }
+  constructor(private service:UsersService, private userAuthenticationService:AuthenticationService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
   this.currentUser = this.userAuthenticationService.currentUserValue;
@@ -62,6 +62,7 @@ export class UserComponent implements OnInit {
       formData.append('About', this.user.About);
       formData.append('Phone', this.user.Phone);
       formData.append('Website', this.user.Website);
+      formData.append('UserKey',this.user.UserKey.toString());
       this.service.saveUserWithImage(formData);
    
       // this.http.post('https://localhost:5001/api/upload', formData, {reportProgress: true, observe: 'events'})
@@ -78,5 +79,10 @@ export class UserComponent implements OnInit {
   cancelProfileEdit(){
 
   }
-
+  DeleteProfile(){
+    this.service.deleteUser(this.user.UserKey).subscribe(response => {
+      this.userAuthenticationService.logout();
+      this.router.navigate(['']);
+    });
+  }
 }

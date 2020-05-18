@@ -5,6 +5,7 @@ import { Post } from '../models/Post';
 import User from 'src/app/Models/User';
 import SearchPostRequest from 'src/app/Models/RequestModels/SearchPostRequest';
 import { Comment } from '../models/Comment';
+import { BlogService } from 'src/app/blogs/BlogService/blog.service';
 
 @Component({
   selector: 'app-post',
@@ -21,7 +22,7 @@ export class PostComponent implements OnInit {
   commentContent:string;
   IsCommentLoaded:boolean = false;
   commentAvailableInBuffer:boolean = false;
-  constructor(private service:PostService, private route: ActivatedRoute) { }
+  constructor(private service:PostService, private blogService:BlogService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.service.getPost(this.route.snapshot.paramMap.get('id')).subscribe(response=>
@@ -75,6 +76,12 @@ export class PostComponent implements OnInit {
   vote(){
     this.service.vote(this.post.PostKey).subscribe(response => {
       //disable the vote button
-    })
+    });
+  }
+  Subscribe(){
+    this.blogService.SubscribeUser(this.post.Blog.BlogKey).subscribe(response => {
+      //disable the subscribe button
+      this.post.Blog.SubscriberCount++;
+    });
   }
 }

@@ -6,4 +6,5 @@ export class BlogEditorRequest {
     imageContentSubtitle:string;
     imageContent:File;
     blogId:number;
+    categoryId:number;
   }

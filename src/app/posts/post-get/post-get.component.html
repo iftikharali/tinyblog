@@ -1,16 +1,13 @@
 <div class="row">
-    <div class="col-lg-1">
-
-    </div>
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12"  *ngFor="let post of postItem">
                     <div class="blog-image-container"><img class="blog-image" src="{{post.MainContentImageUrl}}" /></div>
                     <div class="blog-details">
                         <div class="blog-title"><a href="{{post.Url}}" target="_blank" > {{post.Title}}</a></div>
-                        <div class="blog-excerpt">{{post.SubTitle}}</div>
+                        <div class="blog-excerpt"><small>{{post.SubTitle.substring(0,70)}}</small></div>
                         <div class="blog-category"><small><i>{{post.Category?.Name}}</i></small></div>
-                        <div class="blog-vote"><small>{{post.Votes}}</small></div>
+                        <div class="blog-vote" ><small>{{post.Votes}} Votes | {{post.Views}} Views</small></div>
                     </div>
                 </div>
         </div>

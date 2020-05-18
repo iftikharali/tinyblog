@@ -1,5 +1,6 @@
 import User from 'src/app/Models/User'
 import Tag from 'src/app/Models/Tag';
+import { Blog } from 'src/app/blogs/Models/Blog';
 
 export class Post {
     PostKey: number;
@@ -17,7 +18,7 @@ export class Post {
     Content: String;
     IsPublished: boolean;
     IsActive: boolean;
-    BlogID: Number;
+    Blog: Blog;
     Views: Number;
     Votes: Number;
     Next:string;
