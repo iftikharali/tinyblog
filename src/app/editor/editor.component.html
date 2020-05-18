@@ -23,13 +23,25 @@
             <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="HtmlContent"></angular-editor>
         </div>
         <hr>
-        <div  *ngIf="!IsBlog">
+        <div  *ngIf="IsBlog">
             <select class="custom-select" [(ngModel)]="CategoryId">
                 <option selected>Select Category</option>
                 <option value="{{categoryItem.CategoryKey}}" *ngFor="let categoryItem of categories">{{categoryItem.Name}}</option>
               </select>
               <hr>
-            </div>
+        </div>
+        <div *ngIf="!IsBlog">
+            <select class="custom-select" [(ngModel)]="PreviousPostUrl">
+                <option selected>Select Previous</option>
+                <option value="{{postItem.Url}}" *ngFor="let postItem of posts">{{postItem.Title}}</option>
+              </select>
+              <hr>
+              <select class="custom-select" [(ngModel)]="NextPostUrl">
+                  <option selected>Select Next</option>
+                  <option value="{{postItem.Url}}" *ngFor="let postItem of posts">{{postItem.Title}}</option>
+                </select>
+                <hr>
+        </div>
         <div class="row">
             
             <div class="col-lg-12">

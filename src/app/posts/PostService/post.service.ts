@@ -16,11 +16,15 @@ import { BlogEditorRequest } from 'src/app/editor/editor.model';
 })
 export class PostService {
 
+
   constructor(private client: HttpClient) { }
 
   getPosts(request: SearchPostRequest):Observable<Post[]>
   {
     return this.client.get<Post[]>(GlobalConstants.BASE_URL+ServiceUrls.POST_LIST_GET+'?'+Utility.constructObjectURL(request));
+  }
+  getPostsbyuser(UserKey:number):Observable<Post[]> {
+    return this.client.get<Post[]>(GlobalConstants.BASE_URL+ServiceUrls.POST_LIST_GET_BY_USER(UserKey));
   }
   getPost(PostKey):Observable<Post>{
     return this.client.get<Post>(GlobalConstants.BASE_URL+ServiceUrls.POST_GET+PostKey);
@@ -42,9 +46,10 @@ export class PostService {
       formData.append("Title",postRequest.title);
       formData.append("content",postRequest.HtmlContent);
       formData.append("SubTitle",postRequest.subTitle);
-      formData.append("CategoryKey",postRequest.categoryId.toString());
       formData.append("MainContentImageSubtitle",postRequest.imageContentSubtitle);
       formData.append("Tags",postRequest.tags);
+      formData.append("Previous",postRequest.Previous);
+      formData.append("Next",postRequest.Next);
 
     return this.client.post<any>(GlobalConstants.BASE_URL+ServiceUrls.POST_SAVE,formData);
   }

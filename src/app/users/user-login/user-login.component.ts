@@ -46,11 +46,10 @@ export class UserLoginComponent implements OnInit {
         },
         error => {
            console.log(error.error.message);
-           //this.loginForm.setErrors({invalid:true});
            this.loginFailed = true;
            this.loginFailedMessage = error.error.message;
+           this.loginForm.reset();
         });
-    console.log('logged in sucessfully');
   }
 
 }

@@ -1,5 +1,6 @@
 export class ServiceUrls { 
     public static POST_LIST_GET = "posts/";
+    public static POST_LIST_GET_BY_USER = (UserId) => `postsbyuser/${UserId}`;
     public static COMMENT_LIST_GET = (postId) => `post/${postId}/comments/`;
     public static POST_GET = "post/";
     public static BLOG_GET = "blog/";

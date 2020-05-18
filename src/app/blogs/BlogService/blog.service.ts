@@ -36,6 +36,7 @@ export class BlogService {
       formData.append("Title",blogRequest.title);
       formData.append("content",blogRequest.HtmlContent);
       formData.append("SubTitle",blogRequest.subTitle);
+      formData.append("CategoryKey",blogRequest.categoryId.toString());
       formData.append("MainContentImageSubtitle",blogRequest.imageContentSubtitle);
       formData.append("Tags",blogRequest.tags);
 
